@@ -83,6 +83,10 @@ body {
 .base-section {
     padding-block: 150px 100px;
 
+    @media(max-width:36em) {
+        padding-block: 80px 30px;
+    }
+
     &[color="tertiary"] {
         background-color: var(--tertiary-color);
 
@@ -206,6 +210,7 @@ h5,
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid;
+    white-space: nowrap;
 
     i {
         color: var(--button-font-color);

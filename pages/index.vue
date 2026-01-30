@@ -168,6 +168,9 @@
         display: flex;
         flex-flow: column nowrap;
         gap: 0.25em;
+        @media(max-width:36em) {
+            font-size: 3em;
+        }
         span {
             font-family: var(--display-font);
             line-height: 1em;
@@ -254,16 +257,17 @@
 }
 
     .beneficios-grid {
-        @media(min-width:36em) {
-            padding-right: 90px;
-        }
         display: grid;
         gap:  60px 150px;
         grid-template-columns: auto auto;
         list-style: none;
+        @media(min-width:36em) {
+            padding-right: 90px;
+        }
         @media(max-width:36em) {
             grid-template-columns: 1fr;
             gap: 30px;
+            padding: 20px 30px;
         }
     }
 

@@ -71,9 +71,9 @@ const props = defineProps({
         animation-name: cursor-1;
         animation-iteration-count: infinite;
         @media(max-width:36em) {
-            bottom: 10%;
+            bottom: 30%;
             top: auto;
-            right: 15%;
+            right: 25%;
         }
       }
       .gradient__cursor--2 {
@@ -86,9 +86,9 @@ const props = defineProps({
         animation-name: cursor-2;
         animation-iteration-count: infinite;
         @media(max-width:36em) {
-            bottom: 12%;
+            bottom: 30%;
             top: auto;
-            right: 15%;
+            right: 25%;
         }
       }
     }
@@ -101,6 +101,12 @@ const props = defineProps({
       animation-name: rotate;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+      @media(max-width:36em) {
+        max-width: 180px;
+        bottom: auto;
+        top: 15%;
+        right: -20px;
+      }
     }
 
     .button {
