@@ -393,6 +393,9 @@
     height: 80vh;
     display: flex;
     flex-direction: column;
+    @media(max-width:36em) {
+        padding: 40px 20px 0 20px;
+    }
     
     .modal-body {
         display: flex;
@@ -412,6 +415,11 @@
         font-size: 1.125em;
         line-height: 1.5em;
         color: var(--text-color);
+        @media(max-width:36em) {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
     }
 
     .modal__image  {
