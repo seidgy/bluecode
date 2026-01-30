@@ -5,19 +5,16 @@
             <p class="hero__subtitle">Tecnologia não é só código. É estratégia, experiência e resultado.</p>
         </div>
     </bc-hero>
-    <section class="base-section" color="tertiary" id="programas">
+    <section class="base-section" color="black" id="programas">
         <div class="center">
             <div class="section-header">
-                <h2>Sobre o programa</h2>
-                <p class="text--xl">A Work Work lança o maior programa de capacitação digital voltadas à empregabilidade, ao empreendedorismo e à inovação pública, com formações 100% online. Os cursos são certificados, têm acesso a plataforma virtual exclusiva e foram desenvolvidos com metodologias práticas, focadas em resultados reais.</p>
+                <h2>Trabalhos recentes</h2>
+                <p class="subtitle">Do planejamento à sustentação, cuidamos de tudo.</p>
             </div>
-            <div class="section-tabs">
-                <button v-for="(t, i) in trilhas" :key="t.numero" class="section-tabs__tab" :class="{ 'section-tabs__tab--active': data.activeTrilha == i }" @click="data.activeTrilha = i">Trilha {{ t.numero }} <span>{{ t.titulo }}</span></button>
-            </div>
-            <div class="section-tabs-content">
-                <div v-for="(t, i) in trilhas" :trilha="t">
-                    <bc-grid-cursos :trilha="t" v-if="data.activeTrilha == i"></bc-grid-cursos>
-                </div>
+            <div class="clientes">
+                <button class="cliente" v-for="c in clientes">
+                    <img :src="c.imagem" :alt="c.nome" />
+                </button>
             </div>
         </div>
     </section>
@@ -26,234 +23,128 @@
             <img src="/images/decor-2.webp" alt="Decor" aria-hidden="true" />
         </div>
         <div class="center">
-            <h2>Benefícios do programa</h2>
-            <ul class="beneficios-grid">
-                <li v-for="i in beneficios1">{{ i }}</li>
-            </ul>
+            <h2>Como  vamos te ajudar</h2>
+            <div class="beneficios-grid">
+                <ul class="beneficios-list" v-for="b in beneficios">
+                    <li v-for="i in b">
+                        <p class="subtitle">{{ i.title }}</p>
+                        <p>{{ i.description }}</p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
-    <section class="base-section inscricao" color="black">
+    <section class="base-section foco" color="black">
         <div class="center">
-            <h2 visuals="h4">Como se inscrever</h2>
-            <ol>
-                <li>Escolha sua trilha ou curso individual e clique em Inscreva-se.</li>
-                <li>Preencha o formulário digital (nome, CPF, e-mail, telefone e município).</li>
-                <li>Confirme sua inscrição e receba o acesso à plataforma exclusiva por e-mail.</li>
-            </ol>
-            <nuxt-link to="/inscricao" visuals="primary" color="secondary" class="button uppercase">Inscreva-se</nuxt-link>
+            <h3>Foco real no negócio do cliente</h3>
+            <div>
+                <p>Nascemos com o propósito de criar soluções digitais modernas, eficientes e escaláveis.</p>
+                <p>Nosso time é formado por profissionais altamente capacitados, apaixonados por tecnologia, design e inovação.</p>
+            </div>
+            <a href="https://wa.me/556182091530" target="_blank" rel="noopener noreferrer" visuals="primary" color="secondary" class="button uppercase">Falar com especialista</a>
+        </div>
+    </section>
+    <section class="base-section servicos" color="tertiary">
+        <div class="center">
+            <h2>Simples, transparente e sob medida</h2>
+            <div class="servicos-grid">
+                <bc-servico-card v-for="s in servicos" :servico="s"></bc-servico-card>
+            </div>
+        </div>
+    </section>
+    <section class="base-section foco" color="black">
+        <div class="center">
+            <h3>Foco real no negócio do cliente</h3>
+            <div>
+                <p>Em cada etapa do seu negócios conseguimos te ajudar a escalar e tomar as melhores decisões para seu produto digital.</p>
+            </div>
+            <a href="https://wa.me/556182091530" target="_blank" rel="noopener noreferrer" visuals="primary" color="secondary" class="button uppercase">Falar com especialista</a>
         </div>
     </section>
     <bc-footer></bc-footer>
 </template>
 
 <script setup>
-    const data = reactive({
-        activeTrilha: 0
-    })
-
-    const trilhas = [
+    const clientes = [
         {
-            numero: '1',
-            titulo: 'Profissional do Futuro - Marca, Produtividade e IA',
-            valor: '8.320',
-            duracao: '30 dias',
-            certificados: '6 certificados digitais',
-            modalidade: '100% online, com videoaulas, exercícios práticos e certificação digital.',
-            cursos: [
-                {
-                    titulo: 'Currículos Inteligentes com IA',
-                    descricao: 'Aprenda a construir e adaptar currículos para diferentes vagas, utilizando inteligência artificial (04 h/a) ',
-                    valor: '900',
-                    imagem: '/images/step-1.webp'
-                },
-                {
-                    titulo: 'LinkedIn Estratégico e Reputação Digital',
-                    descricao: 'Transforme seu perfil em vitrine profissional e conquiste novas oportunidades (04 h/a) ',
-                    valor: '1.200',
-                    imagem: '/images/step-2.webp'
-                },
-                {
-                    titulo: 'Marca Pessoal, Presença nas Redes Sociais e Canais Digitais ',
-                    descricao: 'Aprenda a comunicar sua história e destacar seu valor profissional (04 h/a) ',
-                    valor: '900',
-                    imagem: '/images/step-3.webp'
-                },
-                {
-                    titulo: 'Produtividade Inteligente com IA',
-                    descricao: 'ferramentas e métodos para organizar sua rotina com mais eficiência (20 h/a)',
-                    valor: '2.500',
-                    imagem: '/images/step-4.webp'
-                },
-                {
-                    titulo: 'Conteúdo Profissional com IA ',
-                    descricao: 'Transforme seu perfil em vitrine profissional e conquiste novas oportunidades (12 h/a)',
-                    valor: '1.950',
-                    imagem: '/images/step-5.webp'
-                },
-                {
-                    titulo: 'Dominando a IA para o Mercado de Trabalho',
-                    descricao: 'domine as técnicas para gerar resultados profissionais com IA (12 h/a)',
-                    valor: '2.950',
-                    imagem: '/images/step-6.webp'
-                },
-            ]
+            nome: 'IEPREV Premium',
+            imagem: '/images/ieprev-gray.png'
         },
         {
-            numero: '2',
-            titulo: 'Empreendedorismo Digital e Vendas Online',
-            valor: '10.360',
-            duracao: '30 dias',
-            certificados: '6 certificados digitais',
-            modalidade: 'Online com atividades práticas e mentorias.',
-            cursos: [
-                {
-                    titulo: 'Aprenda a Vender Online ',
-                    descricao: 'Crie e otimize sua loja virtual, aprenda funis de vendas e estratégias digitais (20 h/a) ',
-                    valor: '2.950',
-                    imagem: '/images/step-1.webp'
-                },
-                {
-                    titulo: 'Marketing Digital com IA',
-                    descricao: 'Aprenda a usar IA para aumentar o alcance e posicionamento do seu negócio (20h/a)',
-                    valor: '2.500',
-                    imagem: '/images/step-2.webp'
-                },
-                {
-                    titulo: 'Marketing de Conteúdo com IA',
-                    descricao: 'Desenvolva o conteúdo certo para atrair e fidelizar clientes (20 h/a)',
-                    valor: '2.500',
-                    imagem: '/images/step-3.webp'
-                },
-                {
-                    titulo: 'Como Criar e Vender Infoprodutos ',
-                    descricao: 'Transforme conhecimento em produto digital e gere renda recorrente (20h/a)',
-                    valor: '2.500',
-                    imagem: '/images/step-4.webp'
-                },
-                {
-                    titulo: 'Dominando a IA para Negócios e Vendas',
-                    descricao: 'Automatize rotinas e processos, reduzindo custos e tempo (12h/a)',
-                    valor: '2.950',
-                    imagem: '/images/step-5.webp'
-                }
-            ]
+            nome: 'RediRedi',
+            imagem: '/images/rediredi-gray.png'
         },
         {
-            numero: '3',
-            titulo: 'Formação que transforma territórios e fortalece profissionais',
-            valor: '16.920',
-            duracao: '64 horas (4 cursos de 16h)',
-            extra: '*Condições especiais para aquisição de trilhas completas ou grupos – sob consulta.',
-            certificados: '',
-            modalidade: 'Curso on-line - 100% ao vivo.',
-            cursos: [
-                {
-                    titulo: 'Práticas para Garantir Segurança com Proximidade e Resultado',
-                    descricao: 'Este curso aprofunda o modelo de polícia de proximidade e suas interfaces com a comunidade, trabalhando fundamentos de polícia comunitária, cidadania ativa e direitos humanos. A trilha desenvolve habilidades para atuar com resultado, mas sempre ancorado em confiança, diálogo e respeito à dignidade humana, fortalecendo o papel do policial e das lideranças comunitárias como agentes de transformação social no território.',
-                    valor: '4.230',
-                    imagem: '/images/step-1.webp',
-                    aulas: [
-                       {
-                        titulo: '1º Encontro',
-                        descricao: 'Polícia de Proximidade e o Papel do Líder Comunitário'
-                       },
-                       {
-                        titulo: '2º Encontro',
-                        descricao: 'Cidadania Ativa e Segurança Pública'
-                       },
-                       {
-                        titulo: '3º Encontro',
-                        descricao: 'Direitos Humanos e Relação com a Sociedade'
-                       },
-                       {
-                        titulo: '4º Encontro',
-                        descricao: 'Liderança Comunitária e Policiamento Ativo'
-                       },
-                    ]
-                },
-                {
-                    titulo: 'Construindo Confiança com Ética e Responsabilidade',
-                    descricao: 'Este curso foca na atuação ética, transparente e responsável de profissionais da segurança e lideranças comunitárias, especialmente em contextos de vulnerabilidade. A trilha trabalha competências para interagir com grupos vulneráveis, conduzir atendimentos com empatia, tomar decisões com base em critérios éticos e comunicar incidentes com transparência, fortalecendo a confiança entre todos os atores do território.',
-                    valor: '4.230',
-                    imagem: '/images/step-2.webp',
-                    aulas: [
-                       {
-                        titulo: '1º Encontro',
-                        descricao: 'Atuação Sensível com Grupos Vulneráveis: um Dever Compartilhado'
-                       },
-                       {
-                        titulo: '2º Encontro',
-                        descricao: 'Práticas Eficazes de Interação com a Comunidade'
-                       },
-                       {
-                        titulo: '3º Encontro',
-                        descricao: 'Critérios Éticos e Responsabilidade Pública'
-                       },
-                       {
-                        titulo: '4º Encontro',
-                        descricao: 'Transparência e Relato de Incidentes: Comunicação Segura entre Atores'
-                       },
-                    ]
-                },
-                {
-                    titulo: 'Governança Comunitária e Gestão de Conflitos no Território',
-                    descricao: 'Este curso desenvolve competências para organizar redes, lideranças e instituições em torno de uma governança comunitária sólida, com foco na prevenção e gestão de conflitos. A trilha aprofunda conceitos de redes territoriais, sociologia do conflito, construção de acordos comunitários e atuação conjunta em situações sensíveis, oferecendo ferramentas para decisão compartilhada e coordenação efetiva entre comunidade e polícia de proximidade.',
-                    valor: '4.230',
-                    imagem: '/images/step-3.webp',
-                    aulas: [
-                       {
-                        titulo: '1º Encontro',
-                        descricao: 'Redes de Liderança e Cooperação Territorial'
-                       },
-                       {
-                        titulo: '2º Encontro',
-                        descricao: 'Sociologia do Conflito e Dinâmicas da Violência Urbana'
-                       },
-                       {
-                        titulo: '3º Encontro',
-                        descricao: 'Estratégias de Acordo e Gestão Comunitária de Tensões'
-                       },
-                       {
-                        titulo: '4º Encontro',
-                        descricao: 'Atuação Conjunta: Comunidade e Polícia de Proximidade em Situações Sensíveis'
-                       },
-                    ]
-                },
-                {
-                    titulo: 'Inovação Social e Prevenção Integrada no Território',
-                    descricao: 'Este curso trabalha a inovação social aplicada à prevenção da violência e à proteção do território, unindo diagnóstico vivo, informação qualificada e articulação em rede. A trilha desenvolve capacidades para ler o território em movimento, planejar ações preventivas integradas, usar dados e redes digitais a favor da segurança social e construir projetos rápidos de impacto comunitário, sempre em parceria com atores locais e políticas públicas existentes.',
-                    valor: '4.230',
-                    imagem: '/images/step-4.webp',
-                    aulas: [
-                       {
-                        titulo: '1º Encontro',
-                        descricao: 'Diagnóstico Vivo do Território: Mapas Sociais, Fluxos e Pontos Sensíveis'
-                       },
-                       {
-                        titulo: '2º Encontro',
-                        descricao: 'Prevenção Inteligente e Articulação com a Rede Pública Local'
-                       },
-                       {
-                        titulo: '3º Encontro',
-                        descricao: 'Informação, Redes Digitais e Segurança Social na Era Contemporânea'
-                       },
-                       {
-                        titulo: '4º Encontro',
-                        descricao: 'Projetos Rápidos de Impacto Comunitário: Construção Colaborativa'
-                       },
-                    ]
-                },
-            ]
-        }
+            nome: 'Ancar Ivanhoe',
+            imagem: '/images/ancar-gray.png'
+        },
+        {
+            nome: 'Pilotis Imóveis',
+            imagem: '/images/pilotis-gray.png'
+        },
+        {
+            nome: 'Conecta Campo',
+            imagem: '/images/conecta-gray.png'
+        },
     ]
 
-    const beneficios1 = [
-        'Certificação digital verificável com QR Code',
-        'Flexibilidade de horários (autoestudo + encontros síncronos opcionais)',
-        'Acesso à plataforma exclusiva de aprendizagem',
-        'Networking com empreendedores, gestores e profissionais do setor público',
-        'Aulas 100% online com tutores especializados',
-        'Participação em comunidades digitais de aprendizagem e mentorias'
+    const servicos = [  
+        {
+            title: 'Design UX/UI e Desenvolvimento de Sites',
+            description: 'Design e Desenvolvemos desde sites institucionais até landing pages estratégicas, com foco em performance, SEO e experiência do usuário. Ideal para Empresas que precisam fortalecer a presença digital, gerar leads e transmitir credibilidade',
+            image: '/images/step-1.webp'
+        },
+        {
+            title: 'Apps Mobile',
+            description: 'Aplicativos focados em usabilidade, performance e escalabilidade. Criamos apps Android e iOS, desde o MVP até produtos robustos, sempre com foco na experiência do usuário e nos objetivos do negócio.',
+            image: '/images/step-2.webp'
+        },
+        {
+            title: 'Sistemas Web Sob Medida',
+            description: 'Criamos sistemas personalizados para resolver problemas reais do seu negócio. Desenvolvemos plataformas, painéis administrativos, ERPs, CRMs e sistemas internos, totalmente adaptados ao seu fluxo operacional',
+            image: '/images/step-3.webp'
+        },
+        {
+            title: 'Automações, IA e Integrações',
+            description: 'Automatizamos processos para reduzir custos e ganhar eficiência. Integramos sistemas, plataformas e ferramentas para eliminar tarefas manuais, erros operacionais e retrabalho.',
+            image: '/images/step-4.webp'
+        },
+        {
+            title: 'Sustentação e Evolução de Sistemas',
+            description: 'Seu sistema está no ar? A gente garante que continue funcionando e evoluindo. Oferecemos suporte técnico, manutenção preventiva e evolução contínua para sistemas já existentes.',
+            image: '/images/step-5.webp'
+        },
+    ]
+
+    const beneficios = [
+        [
+            {
+                title: 'Entendimento do negócio',
+                description: 'Entender sua estrutura é importante para orientar o que precisa ser feito'
+            },
+            {
+                title: 'Planejamento técnico e estratégico',
+                description: 'Nosso time técnico vai planejar cada entrega com acompanhamento e estratégia para o melhor aproveitamento do seu investimento'
+            },
+            {
+                title: 'Design e prototipação',
+                description: 'Experiência para reduzir erros e aumentar a assertividade do produto'
+            }
+        ],
+        [
+            {
+                title: 'Desenvolvimento',
+                description: 'Com o protótipo validade e testado vamos iniciar o desenvolvimento'
+            },
+            {
+                title: 'Testes e entrega',
+                description: 'Testes de toda a jornada para garantir o melhor lançamento'
+            },
+            {
+                title: 'Sustentação e evolução contínua',
+                description: 'Aqui vamos garantir que tudo fique 100% para o seu crescimento e escala'
+            }
+        ]
     ]
 
 </script>
@@ -306,60 +197,33 @@
     display: flex;
     flex-direction: column;
     gap: 22px;
-    p {
-        font-size: 1.25em;
-        max-width: 890px;
-        @media(max-width:36em) {
-            font-size: 1.125em;
-        }
-    }
 }
 
-.section-tabs {
-    border-bottom: 1px solid var(--primary-color);
-    width: 100%;
+.clientes {
+    gap: 20px;
     display: flex;
     flex-flow: row nowrap;
-    gap: 24px;
-    @media(max-width:36em) {
-        gap: 12px;
+    justify-content: space-between;
+    width: 100%;
+    overflow-x: auto;
+    .cliente {
+        flex-shrink: 0;
+        background-image: url('/images/cliente-gradient.webp');
+        background-size: cover;
+        background-position: center;
+        width: 196px;
+        height: 196px;
+        padding: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        img {
+            max-width: 100%;;
+        }
     }
 }
-
-    .section-tabs__tab {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: flex-start;
-        gap: 2px;
-        font-size: 1em;
-        padding: 12px 16px;
-        border: none;
-        background: var(--white-color);
-        border-radius: 8px 8px 0 0;
-        font-weight: 700;
-        cursor: pointer;
-        opacity: 0.75;
-        span {
-            font-size: 1.25em;
-            font-weight: 500;
-            text-align: left;
-        }
-        @media(max-width:36em) {
-            font-size: 0.875em;
-            span {
-                font-size: 0.75em
-            }
-        }
-    }
-        
-        .section-tabs__tab--active {
-            color: var(--white-color);
-            background-color: var(--primary-color);
-            opacity: 1;
-            span {
-                color: var(--white-color);
-            }
-        }
 
 .beneficios {
     position: relative;
@@ -390,6 +254,9 @@
 }
 
     .beneficios-grid {
+        @media(min-width:36em) {
+            padding-right: 90px;
+        }
         display: grid;
         gap:  60px 150px;
         grid-template-columns: auto auto;
@@ -398,36 +265,42 @@
             grid-template-columns: 1fr;
             gap: 30px;
         }
-        li {
-            text-transform: uppercase;
-            font-size: 1.25em;
-            font-weight: 700;
-            color: hsla(274, 100%, 78%, 1);
-            letter-spacing: 0.05em;
-            @media(max-width:36em) {
-                font-size: 1.125em;
+    }
+
+        .beneficios-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            li {
+                font-size: 1.25em;
+                line-height: 1.5em;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                .subtitle {
+                    text-transform: uppercase;
+                }
             }
+        }
+
+    .servicos-grid {
+        display: grid;
+        gap: 150px;
+        grid-template-columns: auto auto auto;
+        @media(max-width:36em) {
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
     }
 
-.inscricao {
-    h2 {
-        font-size: 2em;
-        color: var(--accent-color);
-        @media(max-width:36em) {
-            font-size: 1.5em;
-        }
-    }
-    ol {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        li {
-            font-size: 1.25em;
-            @media(max-width:36em) {
-                font-size: 1.125em;
-            }
+.foco {
+    & > .center {
+        gap: 23px;
+        p {
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 1.2em;
         }
     }
 }
