@@ -1,15 +1,16 @@
 <template>
-  <section class="ww-hero">
-    <ww-menu />
-    <div class="ww-hero__content">
+  <section class="bc--hero">
+    <bc--menu />
+    <div class="bc--hero__content">
       <div class="gradient">
         <img class="gradient__decor" src="/images/decor-3.webp" alt="Decoração" aria-hidden="true" />
         <img class="gradient__cursor gradient__cursor--1" src="/images/cursor-1.webp" alt="Cursor" aria-hidden="true" />
         <img class="gradient__cursor gradient__cursor--2" src="/images/cursor-2.webp" alt="Cursor" aria-hidden="true" />
+        <img class="curve-text" src="/images/curve text.webp" alt="Accelerate your business" />
       </div>
       <div class="center">
         <slot></slot>
-        <nuxt-link v-if="button" to="/inscricao" visuals="primary" color="secondary" class="button uppercase">Inscreva-se</nuxt-link>
+        <a href="https://wa.me/556182091530" target="_blank" rel="noopener noreferrer" visuals="primary" color="secondary" class="button uppercase">Falar com especialista</a>
       </div>
     </div>
   </section>
@@ -25,11 +26,11 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-  .ww-hero {
+  .bc--hero {
     padding-bottom: 170px;
     overflow: hidden;
   }
-    .ww-hero__content {
+    .bc--hero__content {
       position: relative;
     }
 
@@ -61,10 +62,10 @@ const props = defineProps({
         }
       }
       .gradient__cursor--1 {
-        max-width: 180px;
-        width: 20%;
-        right: 0;
-        top: 40%;
+        max-width: 20px;
+        width: 5%;
+        right: 28%;
+        top: 80%;
         transform: translateX(110%);
         animation-duration: 10s;
         animation-name: cursor-1;
@@ -76,10 +77,10 @@ const props = defineProps({
         }
       }
       .gradient__cursor--2 {
-        max-width: 215px;
-        width: 20%;
-        right: 0;
-        top: 38%;
+        max-width: 22px;
+        width: 6%;
+        right: 28%;
+        top: 80.5%;
         transform: translateX(72%);
         animation-duration: 10s;
         animation-name: cursor-2;
@@ -90,6 +91,16 @@ const props = defineProps({
             right: 15%;
         }
       }
+    }
+
+    .curve-text {
+      position: absolute;
+      bottom: -100px;
+      right: -120px;
+      animation-duration: 60s;
+      animation-name: rotate;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
     }
 
     .button {
@@ -144,6 +155,15 @@ const props = defineProps({
 
   100% {
     transform: translateX(72%);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

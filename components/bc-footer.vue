@@ -2,7 +2,7 @@
   <footer>
     <div class="center">
       <div class="footer__column">
-        <nuxt-link to="/"><img src="/images/work-work.svg" alt="Work Work Consulting"></nuxt-link>
+        <nuxt-link to="/"><img src="/images/bluecode.svg" alt="Work Work Consulting"></nuxt-link>
         <nuxt-link to="#programas" visuals="transparent" color="secondary" class="button button--nopadding">Programas</nuxt-link>
       </div>
      <div class="footer__column footer__column--minimal">

@@ -2,9 +2,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: ['@nuxtjs/sitemap', 'nuxt-gtag'],
-  site: { "url": "https://workworkconsulting.com.br/" },
+  site: { "url": "https://bluecode.com/" },
   sitemap: {
-    hostname: 'https://workworkconsulting.com.br',
+    hostname: 'https://bluecode.com',
     gzip: true
   },
   app: {
@@ -13,21 +13,21 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'pt-br'
       },
-      title: 'Work Work Consulting',
+      title: 'Blue Code',
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "description", content: "Capacitações práticas em IA aplicadas ao mercado de trabalho, empreendedorismo e vendas online. Aprenda com cursos certificados e 100% online." },
-        { name: "keywords", content: "capacitação digital, empregabilidade, empreendedorismo, inovação com IA, cursos online, trilha de aprendizagem, certificação digital, plataforma de aprendizagem, produtividade com IA, marketing digital com IA, vendas online, marca pessoal, currículos com IA, LinkedIn estratégico, infoprodutos, conteúdo profissional com IA" },
-        { property: "og:title", content: "Work Work Consulting" },
-        { property: "og:description", content: "Capacitações práticas em IA aplicadas ao mercado de trabalho, empreendedorismo e vendas online. Aprenda com cursos certificados e 100% online." },
-        { property: "og:image", content: `/OG.jpg` },
-        { property: "og:logo", content: `/work-work.svg` },
-        { property: "og:url", content: "https://workworkconsulting.com.br" },
+        { name: "description", content: "Criamos tecnologia que acelera negócios, otimiza processos e impulsiona resultados com soluções digitais eficientes." },
+        { name: "keywords", content: "tecnologia para negócios, soluções digitais, inovação tecnológica, aceleração de negócios, software para empresas, transformação digital" },
+        { property: "og:title", content: "Blue Code" },
+        { property: "og:description", content: "Criamos tecnologia que acelera negócios, otimiza processos e impulsiona resultados com soluções digitais eficientes." },
+        { property: "og:image", content: `/OG.webp` },
+        { property: "og:logo", content: `/images/bluecode.svg` },
+        { property: "og:url", content: "https://bluecode.com" },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Work Work Consulting" },
-        { name: "twitter:description", content: "Capacitações práticas em IA aplicadas ao mercado de trabalho, empreendedorismo e vendas online. Aprenda com cursos certificados e 100% online." },
-        { name: "twitter:image", content: `/OG.jpg` }       
+        { name: "twitter:title", content: "Blue Code" },
+        { name: "twitter:description", content: "Criamos tecnologia que acelera negócios, otimiza processos e impulsiona resultados com soluções digitais eficientes." },
+        { name: "twitter:image", content: `/OG.webp` }
       ],
       link: [
         // DNS prefetch for external resources

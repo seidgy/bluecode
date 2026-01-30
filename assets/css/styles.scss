@@ -1,4 +1,14 @@
-*, :root, ::before, ::after {
+@font-face {
+    font-family: 'Tungsten';
+    src: url('../fonts/Tungsten-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*,
+:root,
+::before,
+::after {
     --primary-hsl: 274, 58%, 48%;
     --secondary-hsl: 208, 100%, 50%;
     --tertiary-hsl: 295, 100%, 97%;
@@ -6,7 +16,7 @@
     --base-hsl: 0, 0%, 25%;
     --white-hsl: 0, 0%, 100%;
     --black-hsl: 0, 0%, 4%;
-    
+
 
     --primary-color: hsl(var(--primary-hsl), 1);
     --primary-color-80: hsl(var(--primary-hsl), 0.8);
@@ -28,7 +38,8 @@
 
     --accent-color: hsl(var(--accent-hsl), 1);
 
-    --body-font: "Open Sans", sans-serif;	
+    --body-font: "Open Sans", sans-serif;
+    --display-font: "Tungsten", sans-serif;
 
     --bg-gradient: linear-gradient(0deg, rgba(217, 217, 217, 0.17) -55.43%, rgba(132, 51, 194, 0.07) 100%);
 
@@ -38,6 +49,7 @@
     font-family: var(--body-font);
     line-height: 1.4em;
     color: var(--base-color);
+
     @media (max-width: 36em) {
         color: var(--base-color);
     }
@@ -69,24 +81,30 @@ body {
 
 .base-section {
     padding-block: 150px 100px;
+
     &[color="tertiary"] {
         background-color: var(--tertiary-color);
+
         * {
             color: var(--primary-color);
         }
     }
+
     &[color="white"] {
         background-color: var(--white-color);
+
         * {
             color: var(--primary-color);
         }
     }
+
     &[color="black"] {
         * {
             color: var(--white-color);
         }
     }
-    & > .center {
+
+    &>.center {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -96,38 +114,45 @@ body {
 
 //////////TITLES///////////
 
-h1, *[visuals=h1] {
+h1,
+*[visuals=h1] {
     font-size: 3.5em;
     line-height: 1.07em;
     font-weight: 700;
     letter-spacing: 0;
+
     @media (max-width: 36em) {
         font-size: 2em;
     }
 }
 
-h2, *[visuals=h2] {
+h2,
+*[visuals=h2] {
     font-size: 2.5em;
     line-height: 1em;
     font-weight: 700;
+
     @media (max-width: 36em) {
         font-size: 1.875em;
     }
 }
 
-h3, *[visuals=h3] {
+h3,
+*[visuals=h3] {
     font-size: 1.5em;
     line-height: 1.3em;
     font-weight: 700;
 }
 
-h4, *[visuals=h4] {
+h4,
+*[visuals=h4] {
     font-size: 1.25em;
     line-height: 1.3em;
     font-weight: 700;
 }
 
-h5, *[visuals=h5] {
+h5,
+*[visuals=h5] {
     font-size: 0.875em;
     line-height: 1.3em;
     font-weight: 700;
@@ -146,96 +171,99 @@ h5, *[visuals=h5] {
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid;
+
     i {
-      color: var(--button-font-color);
+        color: var(--button-font-color);
     }
+
     @media(max-width:36em) {
         padding: 10px 16px;
     }
-  }
+}
 
-    .button--sm {
-        border-radius: 5px;
-        padding: 6px 24px;
-        @media(max-width:36em) {
-            padding: 6px 12px;
-        }
-    }
+.button--sm {
+    border-radius: 5px;
+    padding: 6px 24px;
 
-    .button--nopadding {
-      padding: 0;
+    @media(max-width:36em) {
+        padding: 6px 12px;
     }
+}
 
-    .button--icon {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-  
-    .button[visuals="primary"] {
-      background: var(--button-bg-color);
-      border-color: var(--button-bg-color);
-      color: var(--button-font-color);
-    }
-  
-    .button[visuals="secondary"] {
-      background: none;
-      border-color: var(--button-bg-color);
-      color: var(--button-font-color);
-    }
-  
-    .button[visuals="transparent"] {
-      background: none;
-      border-color: transparent;
-      color: var(--button-font-color);
-      font-weight: 400;
-    }
-  
-    .button[color="primary"] {
-      --button-bg-color: var(--primary-color);
-      --button-font-color: var(--white-color);
-    }
-  
-    .button[color="secondary"] {
-        --button-bg-color: var(--secondary-color);
-        --button-font-color: var(--white-color);
-    }
+.button--nopadding {
+    padding: 0;
+}
+
+.button--icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button[visuals="primary"] {
+    background: var(--button-bg-color);
+    border-color: var(--button-bg-color);
+    color: var(--button-font-color);
+}
+
+.button[visuals="secondary"] {
+    background: none;
+    border-color: var(--button-bg-color);
+    color: var(--button-font-color);
+}
+
+.button[visuals="transparent"] {
+    background: none;
+    border-color: transparent;
+    color: var(--button-font-color);
+    font-weight: 400;
+}
+
+.button[color="primary"] {
+    --button-bg-color: var(--primary-color);
+    --button-font-color: var(--white-color);
+}
+
+.button[color="secondary"] {
+    --button-bg-color: var(--secondary-color);
+    --button-font-color: var(--white-color);
+}
 
 
-    .button[color="tertiary"] {
-      --button-bg-color: var(--tertiary-color);
-      --button-font-color: var(--white-color);
-    }
+.button[color="tertiary"] {
+    --button-bg-color: var(--tertiary-color);
+    --button-font-color: var(--white-color);
+}
 
-  
-    .button[color="subtle"] {
-      --button-bg-color: transparent;
-      --button-font-color: var(--base-color);
-    }
-  
-    .button[color="base"] {
-      --button-bg-color: var(--base-color);
-      --button-font-color: var(--white-color);
-    }
-  
-    .button[color="white"] {
-      --button-bg-color: var(--white-color);
-      --button-font-color: var(--white-color);
-    }
 
-    .button[color="accent"] {
-        --button-bg-color: #FF702E;
-        --button-font-color: var(--white-color);
-    }
+.button[color="subtle"] {
+    --button-bg-color: transparent;
+    --button-font-color: var(--base-color);
+}
 
-    .button[color="hl"] {
-        --button-bg-color: #912BD4;
-        --button-font-color: var(--white-color);
-    }
+.button[color="base"] {
+    --button-bg-color: var(--base-color);
+    --button-font-color: var(--white-color);
+}
 
-    .button[color="gray"] {
-        --button-bg-color: #B9B9B9;
-        --button-font-color: #7A7A7A;
-    }
+.button[color="white"] {
+    --button-bg-color: var(--white-color);
+    --button-font-color: var(--white-color);
+}
+
+.button[color="accent"] {
+    --button-bg-color: #FF702E;
+    --button-font-color: var(--white-color);
+}
+
+.button[color="hl"] {
+    --button-bg-color: #912BD4;
+    --button-font-color: var(--white-color);
+}
+
+.button[color="gray"] {
+    --button-bg-color: #B9B9B9;
+    --button-font-color: #7A7A7A;
+}
 
 /// FIM BUTTONS ////////
