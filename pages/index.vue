@@ -12,7 +12,7 @@
                 <p class="subtitle">Do planejamento à sustentação, cuidamos de tudo.</p>
             </div>
             <div class="clientes">
-                <button class="cliente" v-for="c in clientes">
+                <button class="cliente" v-for="c in clientes" @click="showModal(c)">
                     <img :src="c.imagem" :alt="c.nome" />
                 </button>
             </div>
@@ -62,29 +62,71 @@
         </div>
     </section>
     <bc-footer></bc-footer>
+
+    <div class="modal-overlay" v-if="selectedClient" @click="closeModal">
+        <div class="modal-content" @click.stop>
+            <button class="close-button" @click="closeModal">✕</button>
+            <div class="modal-body">
+                <img :src="selectedClient.imagem" :alt="selectedClient.nome" class="modal-logo" />
+                <p class="modal-description">{{ selectedClient.modal.description }}</p>
+                <div class="modal__image" :style="{ backgroundImage: `url(${selectedClient.modal.image})` }" aria-hidden="true">
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
+    const selectedClient = ref(null)
+
+    const showModal = (client) => {
+        selectedClient.value = client
+    }
+
+    const closeModal = () => {
+        selectedClient.value = null
+    }
+
     const clientes = [
         {
             nome: 'IEPREV Premium',
-            imagem: '/images/ieprev-gray.png'
+            imagem: '/images/ieprev-gray.png',
+            modal: {
+                description: 'Sistema sob medida para um dos maiores portais de Advocacia previdenciária do Brasil.',
+                image: '/images/ieprev-print.webp'
+            }
         },
         {
             nome: 'RediRedi',
-            imagem: '/images/rediredi-gray.png'
+            imagem: '/images/rediredi-gray.png',
+            modal: {
+                description: 'Sistema sob medida para um dos maiores portais de Advocacia previdenciária do Brasil.',
+                image: '/images/rediredi-print.webp'
+            }
         },
         {
             nome: 'Ancar Ivanhoe',
-            imagem: '/images/ancar-gray.png'
+            imagem: '/images/ancar-gray.png',
+            modal: {
+                description: 'Sistema sob medida para um dos maiores portais de Advocacia previdenciária do Brasil.',
+                image: '/images/ancar-print.webp'
+            }
         },
         {
             nome: 'Pilotis Imóveis',
-            imagem: '/images/pilotis-gray.png'
+            imagem: '/images/pilotis-gray.png',
+            modal: {
+                description: 'Sistema sob medida para um dos maiores portais de Advocacia previdenciária do Brasil.',
+                image: '/images/pilotis-print.webp'
+            }
         },
         {
             nome: 'Conecta Campo',
-            imagem: '/images/conecta-gray.png'
+            imagem: '/images/conecta-gray.png',
+            modal: {
+                description: 'Sistema sob medida para um dos maiores portais de Advocacia previdenciária do Brasil.',
+                image: '/images/conecta-print.webp'
+            }
         },
     ]
 
@@ -324,5 +366,82 @@
     bottom: 10%;
     opacity: 0.5;
   }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background-image: url('/images/cliente-gradient.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 140px 0 140px;
+    max-width: 940px;
+    width: 90%;
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .modal-logo {
+        max-width: 180px;
+        height: auto;
+    }
+
+    .modal-description {
+        font-size: 1.125em;
+        line-height: 1.5em;
+        color: var(--text-color);
+    }
+
+    .modal__image  {
+        width: 100%;
+        flex-grow: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: rgba(0,0,0,0.05);
+    }
 }
 </style>
